@@ -6,5 +6,6 @@ This is a simple template for building React apps.
 
 * Install the dependencies: `npm install`
 * Webpack development server need to be installed for serving bundled JavaScript application. `npm install webpack-dev-server -g`
-* Run webpack server: `webpack-dev-server --progress --colors`
-* Open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/) to see the app page
+* Package scripts. `webpack --progress`
+* Run webpack server: `npm start`
+* Open [http://localhost:3000/](http://localhost:3000) to see the app page
