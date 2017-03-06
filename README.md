@@ -1,4 +1,5 @@
 # react-dev-template
+[![Build Status](https://travis-ci.org/soragu/react-dev-template.svg?branch=master)](https://travis-ci.org/soragu/react-dev-template)
 
 This is a simple template for building React apps.
 
