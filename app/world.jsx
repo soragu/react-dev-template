@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class World extends React.Component {
   render() {
@@ -7,4 +6,4 @@ class World extends React.Component {
   }
 }
 
-ReactDOM.render(<World/>, document.getElementById('world'));
+export default World;

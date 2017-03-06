@@ -1,20 +1,40 @@
 {
-  "name": "react-dev-env",
+  "name": "react-dev-template",
   "version": "1.0.0",
   "description": "",
   "main": "app/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "babel-node ./node_modules/.bin/_mocha --reporter mochawesome test/**/*.test.js; exit 0",
+    "coverage": "babel-node ./node_modules/.bin/istanbul cover _mocha -- test/**/*.test.js",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "start": "webpack-dev-server --progress",
+    "build:js": "webpack --color --progress",
+    "lint": "eslint app; exit 0"
   },
-  "keywords": ["react"],
+  "keywords": [
+    "react"
+  ],
   "author": "cgu",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.23.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
-    "webpack": "^1.13.3"
+    "chai": "^3.5.0",
+    "coveralls": "^2.12.0",
+    "enzyme": "^2.7.0",
+    "eslint": "^3.13.1",
+    "eslint-plugin-react": "^6.9.0",
+    "istanbul": "^1.0.0-alpha.2",
+    "jsdom": "^9.9.1",
+    "mocha": "^3.2.0",
+    "mochawesome": "^2.0.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-hot-loader": "^1.3.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
     "react": "^15.4.1",

@@ -1,4 +1,5 @@
 # react-dev-template
+[![Build Status](https://travis-ci.org/soragu/react-dev-template.svg?branch=master)](https://travis-ci.org/soragu/react-dev-template)[![Coverage Status](https://coveralls.io/repos/github/soragu/react-dev-template/badge.svg)](https://coveralls.io/github/soragu/react-dev-template)
 
 This is a simple template for building React apps.
 
@@ -6,5 +7,6 @@ This is a simple template for building React apps.
 
 * Install the dependencies: `npm install`
 * Webpack development server need to be installed for serving bundled JavaScript application. `npm install webpack-dev-server -g`
-* Run webpack server: `webpack-dev-server --progress --colors`
-* Open [http://localhost:8080/webpack-dev-server/](http://localhost:8080/webpack-dev-server/) to see the app page
+* Package scripts. `webpack --progress`
+* Run webpack server: `npm start`
+* Open [http://localhost:3000/](http://localhost:3000) to see the app page
