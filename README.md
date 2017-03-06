@@ -1,5 +1,5 @@
 # react-dev-template
-[![Build Status](https://travis-ci.org/soragu/react-dev-template.svg?branch=master)](https://travis-ci.org/soragu/react-dev-template)
+[![Build Status](https://travis-ci.org/soragu/react-dev-template.svg?branch=master)](https://travis-ci.org/soragu/react-dev-template)[![Coverage Status](https://coveralls.io/repos/github/soragu/react-dev-template/badge.svg)](https://coveralls.io/github/soragu/react-dev-template)
 
 This is a simple template for building React apps.
 
