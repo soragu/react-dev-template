@@ -4,7 +4,7 @@
         "react"
     ],
     "parserOptions": {
-    	"ecmaVersion": 6,
+        "ecmaVersion": 6,
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true,
@@ -14,5 +14,8 @@
     "rules": {
         "react/display-name": 1,
         "react/jsx-boolean-value": 1
+    },
+    "globals": {
+        "window": true
     }
 }

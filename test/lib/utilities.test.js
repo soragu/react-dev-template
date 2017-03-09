@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Utilities from '../app/utilities.js';
+import Utilities from 'Library/utilities.js';
 
 describe("sqrt", () => {
 
