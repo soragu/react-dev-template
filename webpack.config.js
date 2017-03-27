@@ -5,7 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin'); // style package
 var HtmlWebpackPlugin = require('html-webpack-plugin'); // index.html creator
 
 var BUILD_DIR = path.resolve(__dirname, './dist');
-var APP_DIR = path.resolve(__dirname, './app');
+var APP_DIR = path.resolve(__dirname, './src');
 var IMAGES_DIR = path.resolve(__dirname, './images');
 
 var config = {
@@ -23,8 +23,8 @@ var config = {
         enforceExtension: false,
         extensions: ['.js', '.jsx'], // append file extension name
         alias: {
-            Library: path.resolve(__dirname, 'app/lib'),
-            Components: path.resolve(__dirname, 'app/components'),
+            Library: path.resolve(__dirname, 'src/lib'),
+            Components: path.resolve(__dirname, 'src/components'),
             Images: IMAGES_DIR
         }
     },
@@ -54,7 +54,7 @@ var config = {
                     loader: "css-loader", // translates CSS into CommonJS
                     query: {
                         modules: true,
-                        localIdentName: "[name]__[local]___[hash:base64:5]"
+                        localIdentName: "[local]-[name]"
                     }
                 }, {
                     loader: "sass-loader" // compiles Sass to CSS
@@ -96,7 +96,7 @@ var config = {
         new ExtractTextPlugin("styles.css"),
         new HtmlWebpackPlugin({
             title: 'My App',
-            template: 'app/index.tpl.ejs',
+            template: 'src/index.tpl.ejs',
             inject: 'body',
             appRoot: 'main-container'
         })

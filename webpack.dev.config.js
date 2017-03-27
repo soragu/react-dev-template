@@ -4,7 +4,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, './dist');
-var APP_DIR = path.resolve(__dirname, './app');
+var APP_DIR = path.resolve(__dirname, './src');
 var IMAGES_DIR = path.resolve(__dirname, './images');
 
 var config = {
@@ -24,8 +24,8 @@ var config = {
         enforceExtension: false,
         extensions: ['.js', '.jsx'],
         alias: {
-            Library: path.resolve(__dirname, 'app/lib'),
-            Components: path.resolve(__dirname, 'app/components'),
+            Library: path.resolve(__dirname, 'src/lib'),
+            Components: path.resolve(__dirname, 'src/components'),
             Images: IMAGES_DIR
         }
         //fallback: path.join(__dirname, "node_modules")
@@ -55,7 +55,7 @@ var config = {
                 options: {
                     sourceMap: true,
                     modules: true,
-                    localIdentName: "[name]__[local]___[hash:base64:5]"
+                    localIdentName: "[local]-[name]"
                 }
             }, {
                 loader: "sass-loader", // compiles Sass to CSS
@@ -96,7 +96,7 @@ var config = {
         }),
         new HtmlWebpackPlugin({
             title: 'My App',
-            template: 'app/index.tpl.ejs',
+            template: 'src/index.tpl.ejs',
             inject: 'body',
             appRoot: 'main-container'
         })

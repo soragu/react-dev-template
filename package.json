@@ -2,7 +2,7 @@
   "name": "react-dev-template",
   "version": "1.0.0",
   "description": "[![Build Status](https://travis-ci.org/soragu/react-dev-template.svg?branch=master)](https://travis-ci.org/soragu/react-dev-template) [![Coverage Status](https://coveralls.io/repos/github/soragu/react-dev-template/badge.svg)](https://coveralls.io/github/soragu/react-dev-template)",
-  "main": "app/main.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "NODE_ENV=test mocha test/helpers/.setup.js --reporter mochawesome test/**/*.test.js*",
     "coverage": "NODE_ENV=test istanbul cover _mocha -- test/helpers/.setup.js test/**/*.test.js*",
@@ -11,8 +11,7 @@
     "start:dev": "webpack-dev-server --progress --color --config webpack.dev.config.js",
     "build:js": "NODE_ENV=production webpack --color --progress",
     "build:js:dev": "NODE_ENV=dev webpack --color --progress --display-modules --config webpack.dev.config.js",
-    "build:js:watch": "webpack --watch --progress",
-    "lint": "eslint 'app/**/**/*.js*' 'app/**/*.js*'"
+    "lint": "eslint 'src/**/**/*.js*' 'src/**/*.js*'"
   },
   "keywords": [
     "react"
