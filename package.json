@@ -4,14 +4,14 @@
   "description": "[![Build Status](https://travis-ci.org/soragu/react-dev-template.svg?branch=master)](https://travis-ci.org/soragu/react-dev-template) [![Coverage Status](https://coveralls.io/repos/github/soragu/react-dev-template/badge.svg)](https://coveralls.io/github/soragu/react-dev-template)",
   "main": "src/main.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha test/helpers/.setup.js --reporter mochawesome test/**/*.test.js*",
-    "coverage": "NODE_ENV=test istanbul cover _mocha -- test/helpers/.setup.js test/**/*.test.js*",
+    "test": "NODE_ENV=test mocha test/.setup.js --recursive test --reporter mochawesome",
+    "coverage": "NODE_ENV=test istanbul cover _mocha -- test/.setup.js --recursive test",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "start": "http-server ./dist -p 8080 -o",
     "start:dev": "webpack-dev-server --progress --color --config webpack.dev.config.js",
     "build:js": "NODE_ENV=production webpack --color --progress",
     "build:js:dev": "NODE_ENV=dev webpack --color --progress --display-modules --config webpack.dev.config.js",
-    "lint": "eslint 'src/**/**/*.js*' 'src/**/*.js*'"
+    "lint": "eslint --ext .js,.jsx src test"
   },
   "keywords": [
     "react"
@@ -22,6 +22,7 @@
     "babel-cli": "^6.23.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
+    "babel-plugin-transform-react-remove-prop-types": "^0.3.2",
     "babel-plugin-webpack-alias": "^2.1.2",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
@@ -49,6 +50,7 @@
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
+    "mirror-creator": "^1.1.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.3",

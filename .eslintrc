@@ -21,7 +21,6 @@
         "react/no-string-refs": 1,
         "react/jsx-wrap-multilines": 1,
         "react/self-closing-comp": 1,
-        "react/jsx-closing-bracket-location": 1,
         "react/jsx-no-bind": 1,
         "react/require-render-return": 1,
         "jsx-quotes": ["error", "prefer-double"]

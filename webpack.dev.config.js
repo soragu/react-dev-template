@@ -25,8 +25,15 @@ var config = {
         extensions: ['.js', '.jsx'],
         alias: {
             Library: path.resolve(__dirname, 'src/lib'),
-            Components: path.resolve(__dirname, 'src/components'),
-            Images: IMAGES_DIR
+            Fixtures: path.resolve(__dirname, 'src/fixtures'),
+            Images: IMAGES_DIR,
+            // logic
+            Actions: path.resolve(__dirname, 'src/logic/actions'),
+            Contants: path.resolve(__dirname, 'src/logic/contants'),
+            Reducers:  path.resolve(__dirname, 'src/logic/reducers'),
+            // ui
+            Components: path.resolve(__dirname, 'src/ui/components'),
+            Containers: path.resolve(__dirname, 'src/ui/containers'),
         }
         //fallback: path.join(__dirname, "node_modules")
     },
@@ -66,17 +73,15 @@ var config = {
         }, {
             test: /\.(jpg|png)$/,
             include: IMAGES_DIR,
-            use: [
-            // {
-            //     loader: 'url-loader',
-            //     options: {
-            //         limit: 8192
-            //     }
-            // }, 
-            {
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8192
+                }
+            }, {
                 loader: 'file-loader',
-                options:{
-                    name: "assets/[hash:8]_[name].[ext]"
+                options: {
+                    name: "assets/[name]_[hash:8].[ext]"
                 }
             }],
         }]
@@ -89,6 +94,9 @@ var config = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            React: "react"
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('dev')

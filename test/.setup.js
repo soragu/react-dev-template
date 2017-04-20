@@ -19,6 +19,6 @@ global.navigator = {
 
 documentRef = document;
 
-require.extensions['.scss'] = function() {
-    return null;
-}
+// require.extensions['.scss'] = function() {
+//     return null;
+// }

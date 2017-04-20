@@ -1,1 +1,1 @@
-import './main.jsx';
+import './ui/main.jsx';

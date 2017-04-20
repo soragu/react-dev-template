@@ -19,13 +19,20 @@ var config = {
         filename: 'bundle.js'
     },
     resolve: {
-        //root: '',
+        // root: '',
         enforceExtension: false,
         extensions: ['.js', '.jsx'], // append file extension name
         alias: {
             Library: path.resolve(__dirname, 'src/lib'),
-            Components: path.resolve(__dirname, 'src/components'),
-            Images: IMAGES_DIR
+            Fixtures: path.resolve(__dirname, 'src/fixtures'),
+            Images: IMAGES_DIR,
+            // logic
+            Actions: path.resolve(__dirname, 'src/logic/actions'),
+            Contants: path.resolve(__dirname, 'src/logic/contants'),
+            Reducers:  path.resolve(__dirname, 'src/logic/reducers'),
+            // ui
+            Components: path.resolve(__dirname, 'src/ui/components'),
+            Containers: path.resolve(__dirname, 'src/ui/containers'),
         }
     },
     // externals: {
@@ -60,20 +67,18 @@ var config = {
                     loader: "sass-loader" // compiles Sass to CSS
                 }]
             })
-        },{
+        }, {
             test: /\.(jpg|png)$/,
             include: IMAGES_DIR,
-            use: [
-            // {
-            //     loader: 'url-loader',
-            //     options: {
-            //         limit: 8192
-            //     }
-            // }, 
-            {
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8192
+                }
+            }, {
                 loader: 'file-loader',
-                options:{
-                    name: "assets/[hash:8]_[name].[ext]"
+                options: {
+                    name: "assets/[name]-[hash:8].[ext]"
                 }
             }],
         }]
@@ -83,6 +88,9 @@ var config = {
             'process.env': {
                 NODE_ENV: JSON.stringify('production')
             }
+        }),
+        new webpack.ProvidePlugin({
+            React: "react"
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
