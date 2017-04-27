@@ -1,8 +1,7 @@
 import ActionTypes from 'Contants/ActionTypes';
 
-export function setAvailableFilter(filter) {
+export function setAvailableFilter() {
     return {
         type: ActionTypes.SET_AVAILABLE_FILTER,
-        payload: { filter },
     }
 }

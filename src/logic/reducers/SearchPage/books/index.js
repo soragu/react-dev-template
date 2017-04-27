@@ -1,17 +1,24 @@
-import ActionTypes from "Contants/ActionTypes";
+import ActionTypes from 'Contants/ActionTypes';
 import * as ArrayHelper from 'Library/helpers/array';
 
-const initState = {
-    books: []
-};
+const initState = [];
 
-function booksReducer(state = initState, { type, payload }) {
+function addBook(booksState, book) {
+    return booksState.concat(book);
+}
+
+function searchBooks(booksState, query) {
+    return ArrayHelper.select(booksState, query);
+}
+
+function booksReducer(booksState = initState, { type, payload }) {
     switch (type) {
+        case ActionTypes.ADD_BOOK:
+            return addBook(booksState, payload.book);
         case ActionTypes.SEARCH_BOOKS:
-            const books = ArrayHelper.select(state.books, payload.params);
-            return Object.assign({}, { books });
+            return searchBooks(booksState, payload.query);
         default:
-            return state;
+            return booksState;
     }
 }
 
