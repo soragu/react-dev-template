@@ -30,4 +30,14 @@ describe('SearchPage Actions', () => {
             expect(result).to.eql(expected);
         });
     });
+
+    describe('filterAvailableBooks', () => {
+        it('return type', () => {
+            const expected = {
+                type: ActionTypes.FILTER_AVAILABLE_BOOKS,
+            };
+            const result = actionCreator.filterAvailableBooks();
+            expect(result).to.eql(expected);
+        });
+    });
 });

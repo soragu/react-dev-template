@@ -6,4 +6,5 @@ export default mirrorCreator([
 	'ADD_BOOK',
 	'SUBMIT_BOOK_FORM',
     'SET_QUERY',
+    'FILTER_AVAILABLE_BOOKS',
 ]);

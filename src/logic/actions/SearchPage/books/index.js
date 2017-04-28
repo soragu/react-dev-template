@@ -13,3 +13,9 @@ export function searchBooks(params) {
         payload: { params },
     }
 }
+
+export function filterAvailableBooks() {
+    return {
+        type: ActionTypes.FILTER_AVAILABLE_BOOKS,
+    }
+}

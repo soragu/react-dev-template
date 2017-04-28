@@ -35,4 +35,16 @@ describe ('SearchPage booksReducer', () => {
         const result = booksReducer(Book.collection, action);
         expect(result[0].id).to.eql(1);
     });
+
+    it('handle FILTER_AVAILABLE_BOOKS correctly', () => {
+        const action = {
+            type: ActionTypes.FILTER_AVAILABLE_BOOKS,
+        };
+        const result = booksReducer(Book.collection, action);
+        const expected = Book.collection.filter((item) => {
+            return item.stock > 0;
+        });
+        expect(result).to.eql(expected);
+        expect(result[0].stock).to.above(0);
+    });
 });
