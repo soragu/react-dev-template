@@ -1,14 +1,11 @@
-import ActionTypes from 'Contants/ActionTypes';
+import FilterTypes from 'Contants/FilterTypes';
+import { createReducer } from 'Reducers/utilities';
 
-const initState = 'ALL';
+const initState = FilterTypes.ALL;
 
-function filterReducer(filterState = initState, { type }) {
-    switch (type) {
-        case ActionTypes.SET_AVAILABLE_FILTER:
-            return 'AVAILABLE';
-        default:
-            return filterState;
-    }
-}
+const filterReducer = createReducer(initState, {
+    SET_AVAILABLE_FILTER: () => {
+        return FilterTypes.AVAILABLE; },
+});
 
 export default filterReducer;

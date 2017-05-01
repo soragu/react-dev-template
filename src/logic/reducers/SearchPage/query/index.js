@@ -1,19 +1,14 @@
-import ActionTypes from 'Contants/ActionTypes';
 import * as ObjectHelper from 'Library/helpers/object';
+import { createReducer } from 'Reducers/utilities';
 
-const iniState = {};
+const initState = {};
 
 function setQuery(queryState, query) {
     return ObjectHelper.update(queryState, query);
 }
 
-function queryReducer(queryState = iniState, { type, payload }) {
-    switch (type) {
-        case ActionTypes.SET_QUERY:
-            return setQuery(queryState, payload.query);
-        default:
-            return queryState;
-    }
-}
+const queryReducer = createReducer(initState, {
+    SET_QUERY: setQuery,
+});
 
 export default queryReducer;

@@ -1,7 +1,4 @@
+import { createAction } from 'redux-actions';
 import ActionTypes from 'Contants/ActionTypes';
 
-export function setAvailableFilter() {
-    return {
-        type: ActionTypes.SET_AVAILABLE_FILTER,
-    }
-}
+export const setAvailableFilter = createAction(ActionTypes.SET_AVAILABLE_FILTER);

@@ -1,21 +1,8 @@
+import { createAction } from 'redux-actions';
 import ActionTypes from 'Contants/ActionTypes';
 
-export function addBook(book) {
-    return {
-        type: ActionTypes.ADD_BOOK,
-        payload: { book },
-    }
-}
+export const addBook = createAction(ActionTypes.ADD_BOOK);
 
-export function searchBooks(params) {
-    return {
-        type: ActionTypes.SEARCH_BOOKS,
-        payload: { params },
-    }
-}
+export const searchBooks = createAction(ActionTypes.SEARCH_BOOKS);
 
-export function filterAvailableBooks() {
-    return {
-        type: ActionTypes.FILTER_AVAILABLE_BOOKS,
-    }
-}
+export const filterAvailableBooks = createAction(ActionTypes.FILTER_AVAILABLE_BOOKS);

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import ActionTypes from "Contants/ActionTypes";
+import * as actionCreator from 'Actions/SearchPage/query';
 import queryReducer from 'Reducers/SearchPage/query';
 
 describe('SearchPage queryReducer', () => {
@@ -15,11 +15,7 @@ describe('SearchPage queryReducer', () => {
         const query = {
             id: 1
         };
-        const action = {
-            type: ActionTypes.SET_QUERY,
-            payload: { query },
-        };
-        const result = queryReducer({}, action);
+        const result = queryReducer({}, actionCreator.setQuery(query));
         expect(result).to.eql(query);
     });
 });

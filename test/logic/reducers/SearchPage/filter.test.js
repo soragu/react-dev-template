@@ -1,5 +1,6 @@
 import { expect } from 'chai';
-import ActionTypes from "Contants/ActionTypes";
+import FilterTypes from 'Contants/FilterTypes';
+import * as actionCreator from 'Actions/SearchPage/filter'
 import filterReducer from 'Reducers/SearchPage/filter';
 
 describe('SearchPage filterReducer', () => {
@@ -8,14 +9,12 @@ describe('SearchPage filterReducer', () => {
             type: '',
         };
         const result = filterReducer(undefined, action);
-        expect(result).to.eql('ALL');
+        expect(result).to.eql(FilterTypes.ALL);
     });
 
     it('handle SET_AVAILABLE_FILTER correctly', () => {
-        const action = {
-            type: ActionTypes.SET_AVAILABLE_FILTER,
-        };
-        const result = filterReducer('ALL', action);
-        expect(result).to.eql('AVAILABLE');
+        const result = filterReducer(FilterTypes.ALL, 
+            actionCreator.setAvailableFilter());
+        expect(result).to.eql(FilterTypes.AVAILABLE);
     });
 });

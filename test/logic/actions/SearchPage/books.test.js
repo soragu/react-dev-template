@@ -8,9 +8,7 @@ describe('SearchPage Actions', () => {
         it('return type and passed book object', () => {
             const expected = {
                 type: ActionTypes.ADD_BOOK,
-                payload: {
-                    book: Book.item
-                }
+                payload: Book.item,
             };
             const result = actionCreator.addBook(Book.item);
             expect(result).to.eql(expected);
@@ -24,7 +22,7 @@ describe('SearchPage Actions', () => {
             };
             const expected = {
                 type: ActionTypes.SEARCH_BOOKS,
-                payload: { params }
+                payload: params
             };
             const result = actionCreator.searchBooks(params);
             expect(result).to.eql(expected);

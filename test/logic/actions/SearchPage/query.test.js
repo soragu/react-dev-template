@@ -11,7 +11,7 @@ describe('SearchPage Actions', () => {
             };
             const expected = {
                 type: ActionTypes.SET_QUERY,
-                payload: { query }
+                payload: query,
             };
             const result = actionCreator.setQuery(query);
             expect(result).to.eql(expected);

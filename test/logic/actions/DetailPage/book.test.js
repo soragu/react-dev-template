@@ -8,9 +8,7 @@ describe('DetailPage Actions', () => {
         it('return type and passed book object', () => {
             const expected = {
                 type: ActionTypes.SUBMIT_BOOK_FORM,
-                payload: {
-                    book: Book.item
-                }
+                payload: Book.item,
             };
             const result = actionCreator.submitBookForm(Book.item);
             expect(result).to.eql(expected);

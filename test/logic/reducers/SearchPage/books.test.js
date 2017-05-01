@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import ActionTypes from "Contants/ActionTypes";
+import * as actionCreator from 'Actions/SearchPage/books';
 import booksReducer from 'Reducers/SearchPage/books';
 import * as Book from 'Fixtures/book';
 
-describe ('SearchPage booksReducer', () => {
+describe('SearchPage booksReducer', () => {
     it('return empty array by default', () => {
         const action = {
             type: '',
@@ -13,34 +13,22 @@ describe ('SearchPage booksReducer', () => {
     });
 
     it('handle ADD_BOOK correctly', () => {
-        const action = {
-            type: ActionTypes.ADD_BOOK,
-            payload: {
-                book: Book.item
-            }
-        };
-        const result = booksReducer([], action);
+        const result = booksReducer([], actionCreator.addBook(Book.item));
         expect(result).to.eql([Book.item]);
     });
 
     it('handle SEARCH_BOOKS correctly', () => {
-        const action = {
-            type: ActionTypes.SEARCH_BOOKS,
-            payload: {
-                query: {
-                    id: 1
-                }
-            }
+        const params = {
+            id: 1,
         }
-        const result = booksReducer(Book.collection, action);
+        const result = booksReducer(Book.collection, 
+            actionCreator.searchBooks(params));
         expect(result[0].id).to.eql(1);
     });
 
     it('handle FILTER_AVAILABLE_BOOKS correctly', () => {
-        const action = {
-            type: ActionTypes.FILTER_AVAILABLE_BOOKS,
-        };
-        const result = booksReducer(Book.collection, action);
+        const result = booksReducer(Book.collection, 
+            actionCreator.filterAvailableBooks());
         const expected = Book.collection.filter((item) => {
             return item.stock > 0;
         });
