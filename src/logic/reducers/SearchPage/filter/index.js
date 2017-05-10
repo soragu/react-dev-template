@@ -5,7 +5,11 @@ const initState = FilterTypes.ALL;
 
 const filterReducer = createReducer(initState, {
     SET_AVAILABLE_FILTER: () => {
-        return FilterTypes.AVAILABLE; },
+        return FilterTypes.AVAILABLE; 
+    },
+    SET_ALL_FILTER: () => {
+        return FilterTypes.ALL; 
+    },
 });
 
 export default filterReducer;

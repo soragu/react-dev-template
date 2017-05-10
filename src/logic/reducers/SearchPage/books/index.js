@@ -1,5 +1,6 @@
 import * as ArrayHelper from 'Library/helpers/array';
 import { createReducer } from 'Reducers/utilities';
+import * as Book from 'Fixtures/book';
 
 const initState = [];
 
@@ -17,10 +18,15 @@ function filterAvailableBooks(booksState) {
     });
 }
 
+function filterAllBooks() {
+    return Book.collection;
+}
+
 const booksReducer = createReducer(initState, {
     ADD_BOOK: addBook,
     SEARCH_BOOKS: searchBooks,
     FILTER_AVAILABLE_BOOKS: filterAvailableBooks,
+    FILTER_ALL_BOOKS: filterAllBooks,
 });
 
 // same as

@@ -47,9 +47,6 @@ var config = {
                 loader: "react-hot-loader"
             }, {
                 loader: "babel-loader",
-                options: {
-                    presets: ['react', 'es2015']
-                }
             }]
         }, {
             test: /\.scss$/,
@@ -62,7 +59,8 @@ var config = {
                 options: {
                     sourceMap: true,
                     modules: true,
-                    localIdentName: "[local]-[name]"
+                    camelCase: true,
+                    localIdentName: "[folder]-[local]_[hash:base64:5]"
                 }
             }, {
                 loader: "sass-loader", // compiles Sass to CSS
@@ -95,7 +93,9 @@ var config = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
-            React: "react"
+            React: 'react',
+            Perf: 'react-addons-perf',
+            ReactDOM: 'react-dom',
         }),
         new webpack.DefinePlugin({
             'process.env': {

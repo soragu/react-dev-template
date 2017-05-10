@@ -11,7 +11,7 @@ var IMAGES_DIR = path.resolve(__dirname, './images');
 var config = {
     entry: {
         app: APP_DIR + '/entry.js',
-        vendor: ['react', 'react-dom', 'redux', 'react-redux']
+        vendor: ['react', 'react-dom', 'react-boostrap','redux', 'react-redux']
     },
     output: {
         path: BUILD_DIR,
@@ -47,9 +47,6 @@ var config = {
             exclude: /node_modules/,
             use: [{
                 loader: "babel-loader",
-                options: {
-                    presets: ['react', 'es2015']
-                }
             }]
         }, {
             test: /\.scss$/,
@@ -61,7 +58,9 @@ var config = {
                     loader: "css-loader", // translates CSS into CommonJS
                     query: {
                         modules: true,
-                        localIdentName: "[local]-[name]"
+                        minimize: true,
+                        camelCase: true,
+                        localIdentName: "[folder]-[local]_[hash:base64:5]"
                     }
                 }, {
                     loader: "sass-loader" // compiles Sass to CSS
