@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import * as booksActionCreator from 'Actions/SearchPage/books';
 import { PageHeader, Grid, Row, Col } from 'react-bootstrap';
 import BookList from 'Components/BookList';
 import SearchBar from 'Components/SearchBar';
@@ -35,11 +34,23 @@ class SearchPageContainer extends React.Component {
     }
 }
 
+// Computing Derived Data
+const getVisibleBooks = (books, filter) => {
+    switch (filter) {
+        case 'ALL':
+            return books;
+        case 'AVAILABLE':
+            return books.filter(t => t.stock > 0)
+        case 'UNAVAILABLE':
+            return books.filter(t => t.stock === 0)
+    }
+}
+
 function mapStateToProps(state) {
     return {
         filter: state.filter,
         query: state.query,
-        books: state.books,
+        books: getVisibleBooks(state.books, state.filter),
     };
 }
 

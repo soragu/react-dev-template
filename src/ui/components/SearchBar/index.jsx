@@ -1,24 +1,21 @@
 import { Form, Button } from 'react-bootstrap';
 import FieldGroup from 'Components/Common/Form/FieldGroup';
 import FilterSelector from './FilterSelector';
-// import Perf from 'react-addons-perf';
 
 class SearchBar extends React.Component {
-    handleClick() {
-        console.log(`id:${this.idInput.value}, name:${this.nameInput.value}`);
+
+    handleFilterChange = (e) => {
+        Perf.start();
+        this.props.setFilter(e.target.value);
     }
 
-    handleChange(e) {
-        switch (e.target.value) {
-            case 'AVAILABLE':
-                this.props.setAvailableFilter();
-                this.props.filterAvailableBooks();
-                break;
-            case 'ALL':
-                this.props.setAllFilter();
-                this.props.filterAllBooks();
-                break;
-        }
+    componentDidUpdate() {
+        Perf.stop();
+        Perf.printWasted();
+    }
+
+    handleSearchClick = () => {
+        console.log(`id:${this.idInput.value}, name:${this.nameInput.value}`);
     }
 
     render() {
@@ -41,18 +38,18 @@ class SearchBar extends React.Component {
                     inputRef={(ref) => {this.nameInput = ref;}}
                 />
                 {' '}
-                <Button 
-                    bsStyle="primary" 
-                    onClick={(e) => {this.handleClick(e);}}
-                >
-                    Search
-                </Button>
-                {' '}
                 <FilterSelector 
                     id="filter-selector" 
                     value={filter} 
-                    onChange={(e) => {this.handleChange(e)}}
+                    onChange={this.handleFilterChange}
                 />
+                {' '}
+                <Button 
+                    bsStyle="primary" 
+                    onClick={this.handleSearchClick}
+                >
+                    Search
+                </Button>
             </Form>
         );
     }

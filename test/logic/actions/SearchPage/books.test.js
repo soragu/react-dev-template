@@ -14,28 +14,4 @@ describe('SearchPage Actions', () => {
             expect(result).to.eql(expected);
         });
     });
-
-    describe('searchBooks', () => {
-        it('return type and passed params object', () => {
-            const params = {
-                id: 1
-            };
-            const expected = {
-                type: ActionTypes.SEARCH_BOOKS,
-                payload: params
-            };
-            const result = actionCreator.searchBooks(params);
-            expect(result).to.eql(expected);
-        });
-    });
-
-    describe('filterAvailableBooks', () => {
-        it('return type', () => {
-            const expected = {
-                type: ActionTypes.FILTER_AVAILABLE_BOOKS,
-            };
-            const result = actionCreator.filterAvailableBooks();
-            expect(result).to.eql(expected);
-        });
-    });
 });

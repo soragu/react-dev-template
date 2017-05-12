@@ -12,9 +12,9 @@ describe('SearchPage filterReducer', () => {
         expect(result).to.eql(FilterTypes.ALL);
     });
 
-    it('handle SET_AVAILABLE_FILTER correctly', () => {
+    it('handle SET_FILTER correctly', () => {
         const result = filterReducer(FilterTypes.ALL, 
-            actionCreator.setAvailableFilter());
+            actionCreator.setFilter(FilterTypes.AVAILABLE));
         expect(result).to.eql(FilterTypes.AVAILABLE);
     });
 });
