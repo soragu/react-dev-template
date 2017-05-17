@@ -17,8 +17,8 @@ global.navigator = {
     userAgent: 'node.js'
 };
 
-documentRef = document;
+global.React = require('react');
 
-// require.extensions['.scss'] = function() {
-//     return null;
-// }
+global.expect = require('chai').expect;
+
+documentRef = document;

@@ -21,4 +21,12 @@ function BookList(props) {
     );
 }
 
+BookList.defaultProps = {
+    items: []
+}
+
+BookList.propTypes = {
+    items: React.PropTypes.array
+}
+
 export default BookList;

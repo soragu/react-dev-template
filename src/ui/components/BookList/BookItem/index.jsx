@@ -8,4 +8,10 @@ function BookItem(props){
     );
 }
 
+BookItem.propTypes = {
+    id: React.PropTypes.number,
+    name: React.PropTypes.string,
+    stock: React.PropTypes.number,
+};
+
 export default BookItem;

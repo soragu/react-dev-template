@@ -1,4 +1,4 @@
-export function createReducer(initialState, handlers) {
+export const createReducer = (initialState, handlers) => {
     return function reducer(state = initialState, { type, payload }) {
         if (handlers.hasOwnProperty(type)) {
             return handlers[type](state, payload);

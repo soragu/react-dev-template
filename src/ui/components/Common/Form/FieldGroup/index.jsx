@@ -10,4 +10,9 @@ function FieldGroup({ id, label, ...props}) {
     );
 }
 
+FieldGroup.propTypes = {
+    id: React.PropTypes.string,
+    label: React.PropTypes.string,
+};
+
 export default FieldGroup;

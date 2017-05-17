@@ -1,4 +1,4 @@
-import { createSelector } from 'reselector';
+import { createSelector } from 'reselect';
 import FilterTypes from 'Contants/FilterTypes';
 
 const getFilter = (state) => {
@@ -9,7 +9,7 @@ const getBooks = (state) => {
     return state.books;
 };
 
-const getVisibleBooks = createSelector(
+export const getVisibleBooks = createSelector(
     [getFilter, getBooks],
     (filter, books) => {
         switch (filter) {
@@ -26,5 +26,3 @@ const getVisibleBooks = createSelector(
         }
     }
 );
-
-export default getVisibleBooks;

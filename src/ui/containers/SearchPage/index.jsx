@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import { PageHeader, Grid, Row, Col } from 'react-bootstrap';
 import BookList from 'Components/BookList';
 import SearchBar from 'Components/SearchBar';
-import bindActions from './action';
+import bindActions from './actions';
+import { getVisibleBooks } from './selectors';
 import styles from './index.scss';
 
 class SearchPageContainer extends React.Component {
     render() {
-        const {filter, query, books, dispatch} = this.props;
+        const {books, dispatch} = this.props;
         const actions = bindActions(dispatch);
         return (
             <Grid className={styles.searchContainer}>
@@ -16,8 +17,6 @@ class SearchPageContainer extends React.Component {
                     <Row>
                         <Col xs={12} >
                             <SearchBar 
-                                filter={filter} 
-                                query={query} 
                                 {...actions}
                             />
                         </Col>
@@ -34,23 +33,14 @@ class SearchPageContainer extends React.Component {
     }
 }
 
-// Computing Derived Data
-const getVisibleBooks = (books, filter) => {
-    switch (filter) {
-        case 'ALL':
-            return books;
-        case 'AVAILABLE':
-            return books.filter(t => t.stock > 0)
-        case 'UNAVAILABLE':
-            return books.filter(t => t.stock === 0)
-    }
-}
+SearchPageContainer.propTypes = {
+    books: React.PropTypes.array,
+    dispatch: React.PropTypes.func,
+};
 
 function mapStateToProps(state) {
     return {
-        filter: state.filter,
-        query: state.query,
-        books: getVisibleBooks(state.books, state.filter),
+        books: getVisibleBooks(state),
     };
 }
 

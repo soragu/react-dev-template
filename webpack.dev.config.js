@@ -94,7 +94,6 @@ var config = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             React: 'react',
-            Perf: 'react-addons-perf',
             ReactDOM: 'react-dom',
         }),
         new webpack.DefinePlugin({

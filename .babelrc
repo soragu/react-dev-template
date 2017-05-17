@@ -8,8 +8,7 @@
         "test": {
             "plugins": [
                 [
-                    "babel-plugin-webpack-alias",
-                    {
+                    "babel-plugin-webpack-alias", {
                         "config": "./webpack.dev.config.js"
                     }
                 ]
@@ -18,8 +17,7 @@
         "production": {
             "plugins": [
                 [
-                    "transform-react-remove-prop-types", 
-                    {
+                    "transform-react-remove-prop-types", {
                         "ignoreFilenames": ["node_modules"]
                     }
                 ]

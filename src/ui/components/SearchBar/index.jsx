@@ -5,21 +5,24 @@ import FilterSelector from './FilterSelector';
 class SearchBar extends React.Component {
 
     handleFilterChange = (e) => {
-        Perf.start();
+        //Perf.start();
         this.props.setFilter(e.target.value);
     }
 
-    componentDidUpdate() {
-        Perf.stop();
-        Perf.printWasted();
-    }
+    // componentDidUpdate() {
+    //     Perf.stop();
+    //     Perf.printWasted();
+    // }
 
     handleSearchClick = () => {
-        console.log(`id:${this.idInput.value}, name:${this.nameInput.value}`);
+        const query = {
+            id: this.idInput.value,
+            name: this.nameInput.value,
+        };
+        this.props.setQuery(query);
     }
 
     render() {
-        const {filter, query} = this.props;
         return (
             <Form inline>
                 <FieldGroup
@@ -40,7 +43,6 @@ class SearchBar extends React.Component {
                 {' '}
                 <FilterSelector 
                     id="filter-selector" 
-                    value={filter} 
                     onChange={this.handleFilterChange}
                 />
                 {' '}
@@ -54,5 +56,15 @@ class SearchBar extends React.Component {
         );
     }
 }
+
+SearchBar.defaultProps = {
+    setFilter: () => {},
+    setQuery: () => {},
+};
+
+SearchBar.propTypes = {
+    setFilter: React.PropTypes.func,
+    setQuery: React.PropTypes.func,
+};
 
 export default SearchBar;
