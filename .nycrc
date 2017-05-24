@@ -1,0 +1,30 @@
+{
+  "extension": [
+    ".js",
+    ".jsx"
+  ],
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/fixtures",
+    "src/entry.js"
+  ],
+  "require": [
+    "./test/.setup.js"
+  ],
+  "check-coverage": true,
+  "statements": 90,
+  "branches": 90,
+  "lines": 90,
+  "functions": 90,
+  "reporter": [
+    "lcov",
+    "text-summary",
+    "html"
+  ],
+  "report-dir": "./coverage",
+  "sourceMap": false,
+  "instrument": false,
+  "cache": true
+}

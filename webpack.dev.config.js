@@ -1,27 +1,28 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin'); // style package
-var HtmlWebpackPlugin = require('html-webpack-plugin'); // index.html creator
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, './dist');
 var APP_DIR = path.resolve(__dirname, './src');
 var IMAGES_DIR = path.resolve(__dirname, './images');
 
 var config = {
-    entry: {
-        app: APP_DIR + '/entry.js',
-        vendor: ['react', 'react-dom', 'react-boostrap','redux', 'react-redux']
-    },
+    devtool: 'inline-source-map',
+    entry: [
+        'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+        'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
+        APP_DIR + '/entry.js' // Your appʼs entry point
+    ],
+    //entry: APP_DIR + '/entry.js',
     output: {
         path: BUILD_DIR,
-        publicPath: './',
+        publicPath: '/dist/',
         filename: 'bundle.js'
     },
     resolve: {
-        // root: '',
         enforceExtension: false,
-        extensions: ['.js', '.jsx'], // append file extension name
+        extensions: ['.js', '.jsx'],
         alias: {
             Library: path.resolve(__dirname, 'src/lib'),
             Fixtures: path.resolve(__dirname, 'src/fixtures'),
@@ -34,38 +35,39 @@ var config = {
             Components: path.resolve(__dirname, 'src/ui/components'),
             Containers: path.resolve(__dirname, 'src/ui/containers'),
         }
+        //fallback: path.join(__dirname, "node_modules")
     },
-    // externals: {
-    //     //Use external version of React
-    //     "react": "React",
-    //     "react-dom": "ReactDom"
-    // },
+
     module: {
         rules: [{
             test: /\.jsx?$/,
             include: APP_DIR,
-            exclude: /node_modules/,
+            exclude: /\.scss$/,
             use: [{
+                loader: "react-hot-loader"
+            }, {
                 loader: "babel-loader",
             }]
         }, {
             test: /\.scss$/,
             include: APP_DIR,
-            exclude: /node_modules/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader", // creates style nodes from JS strings
-                use: [{
-                    loader: "css-loader", // translates CSS into CommonJS
-                    query: {
-                        modules: true,
-                        minimize: true,
-                        camelCase: true,
-                        localIdentName: "[folder]-[local]_[hash:base64:5]"
-                    }
-                }, {
-                    loader: "sass-loader" // compiles Sass to CSS
-                }]
-            })
+            exclude: /\.jsx?$/,
+            use: [{
+                loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader", // translates CSS into CommonJS
+                options: {
+                    sourceMap: true,
+                    modules: true,
+                    camelCase: true,
+                    localIdentName: "[folder]-[local]_[hash:base64:5]"
+                }
+            }, {
+                loader: "sass-loader", // compiles Sass to CSS
+                options: {
+                    sourceMap: true,
+                }
+            }]
         }, {
             test: /\.(jpg|png)$/,
             include: IMAGES_DIR,
@@ -77,30 +79,28 @@ var config = {
             }, {
                 loader: 'file-loader',
                 options: {
-                    name: "assets/[name]-[hash:8].[ext]"
+                    name: "assets/[name]_[hash:8].[ext]"
                 }
             }],
         }]
     },
+    devServer: {
+        contentBase: './dist',
+        hot: true,
+        port: 3000,
+        historyApiFallback: true
+    },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            React: 'react',
+            ReactDOM: 'react-dom',
+        }),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('production')
+                NODE_ENV: JSON.stringify('dev')
             }
         }),
-        new webpack.ProvidePlugin({
-            React: "react"
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.js'
-        }),
-        new ExtractTextPlugin("styles.css"),
         new HtmlWebpackPlugin({
             title: 'My App',
             template: 'src/index.tpl.ejs',

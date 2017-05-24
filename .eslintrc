@@ -1,0 +1,41 @@
+{
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "plugins": [
+        "react"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
+    },
+    "env": {
+        //"browser": true
+    },
+    "rules": {
+        "react/react-in-jsx-scope": 0,
+        "react/prefer-es6-class": 1,
+        "react/prefer-stateless-function": 1,
+        "react/jsx-pascal-case": 1,
+        "react/jsx-closing-bracket-location": 1,
+        "react/jsx-space-before-closing": 1,
+        "react/jsx-curly-spacing": 1,
+        "react/no-string-refs": 1,
+        "react/jsx-wrap-multilines": 1,
+        "react/self-closing-comp": 1,
+        "react/jsx-no-bind": [1, {
+            "ignoreRefs": true,
+        }],
+        "react/require-render-return": 1,
+        "jsx-quotes": ["error", "prefer-double"]
+    },
+    "globals": {
+        "window": true,
+        "React": true,
+        "ReactDOM": true,
+        "Perf": true,
+    }
+}
