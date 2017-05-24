@@ -7,20 +7,13 @@
     "env": {
         "test": {
             "plugins": [
-                [
-                    "babel-plugin-webpack-alias", {
-                        "config": "./webpack.dev.config.js"
-                    }
-                ]
+                ["babel-plugin-webpack-alias", {"config": "./webpack.dev.config.js"}],
+                ["istanbul"]
             ]
         },
         "production": {
             "plugins": [
-                [
-                    "transform-react-remove-prop-types", {
-                        "ignoreFilenames": ["node_modules"]
-                    }
-                ]
+                ["transform-react-remove-prop-types", {"ignoreFilenames": ["node_modules"]}]
             ]
         }
     }

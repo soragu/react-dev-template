@@ -4,6 +4,11 @@ import * as Book from 'Fixtures/book';
 
 describe('ArrayHelper', () => {
     describe('select', () => {
+        it('return empty by default', () => {
+            const result = ArrayHelper.select();
+            expect(result).eql([]);
+        });
+
         describe('when array element match condition', () => {
             it('return result by condition', () => {
                 const arr = Book.collection;

@@ -21,4 +21,4 @@ global.React = require('react');
 
 global.expect = require('chai').expect;
 
-documentRef = document;
+// documentRef = document;
