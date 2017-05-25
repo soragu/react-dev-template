@@ -11,12 +11,12 @@ var IMAGES_DIR = path.resolve(__dirname, './images');
 var config = {
     entry: {
         app: APP_DIR + '/entry.js',
-        vendor: ['react', 'react-dom', 'react-boostrap','redux', 'react-redux']
+        vendor: ['react', 'react-dom','redux', 'react-redux'],
     },
     output: {
         path: BUILD_DIR,
         publicPath: './',
-        filename: 'bundle.js'
+        filename: 'bundle.[chunkhash].js'
     },
     resolve: {
         // root: '',
@@ -89,7 +89,8 @@ var config = {
             }
         }),
         new webpack.ProvidePlugin({
-            React: "react"
+            React: 'react',
+            ReactDOM: 'react-dom',
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
@@ -98,7 +99,7 @@ var config = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'vendor.js'
+            filename: 'vendor.[chunkhash].js'
         }),
         new ExtractTextPlugin("styles.css"),
         new HtmlWebpackPlugin({

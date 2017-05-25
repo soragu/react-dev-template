@@ -6,3 +6,4 @@ dist/bundle.js
 npm-debug.log
 coverage
 .nyc_output
+yarn-error.log
