@@ -1,10 +1,11 @@
-import * as ObjectHelper from 'Library/helpers/object';
 import { createReducer } from 'Reducers/utilities';
+import * as ObjectHelper from 'Library/helpers/object';
 
 const initState = {};
 
 function setQuery(queryState, query) {
-    return ObjectHelper.update(queryState, query);
+    const newQuery = ObjectHelper.cleanEmptyValues(query);
+    return newQuery;
 }
 
 const queryReducer = createReducer(initState, {

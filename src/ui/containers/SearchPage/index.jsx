@@ -3,7 +3,7 @@ import { PageHeader, Grid, Row, Col } from 'react-bootstrap';
 import BookList from 'Components/BookList';
 import SearchBar from 'Components/SearchBar';
 import bindActions from './actions';
-import { getVisibleBooks } from './selectors';
+import { getVisibleBooksWithQuery } from './selectors';
 import styles from './index.scss';
 
 class SearchPageContainer extends React.Component {
@@ -40,7 +40,7 @@ SearchPageContainer.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        books: getVisibleBooks(state),
+        books: getVisibleBooksWithQuery(state),
     };
 }
 

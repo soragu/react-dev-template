@@ -7,7 +7,7 @@ import SearchPage from 'Containers/SearchPage';
 const store = createStore(
     searchPageReducer, 
     initState,
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 
 const document = window.document || {};
