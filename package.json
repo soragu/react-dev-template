@@ -69,10 +69,7 @@
   "directories": {
     "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/soragu/react-dev-template.git"
-  },
+  "repository": "git+https://github.com/soragu/react-dev-template.git",
   "bugs": {
     "url": "https://github.com/soragu/react-dev-template/issues"
   },

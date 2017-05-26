@@ -15,7 +15,16 @@ describe('SearchPage queryReducer', () => {
         const query = {
             id: 1
         };
-        const result = queryReducer({}, actionCreator.setQuery(query));
+        const result = queryReducer({id: 2}, actionCreator.setQuery(query));
         expect(result).to.eql(query);
+    });
+
+    it('cleanEmptyValues', () => {
+        const query = {
+            id: null,
+            name: '',
+        };
+        const result = queryReducer({id: 2}, actionCreator.setQuery(query));
+        expect(result).to.eql({});
     });
 });

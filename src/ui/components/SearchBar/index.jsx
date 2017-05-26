@@ -16,11 +16,13 @@ class SearchBar extends React.Component {
 
     handleSearchClick = () => {
         const query = {
-            id: this.idInput.value,
+            id: parseInt(this.idInput.value),
             name: this.nameInput.value,
         };
         this.props.setQuery(query);
     }
+
+
 
     render() {
         return (

@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import * as ObjectHelper from 'Library/helpers/object';
 
 describe('ObjectHelper', () => {
-    describe('update', () => {
+    describe('#update', () => {
         it('update preObject with newValue', () => {
             const preObject = {
                 id: 10,
@@ -19,6 +19,18 @@ describe('ObjectHelper', () => {
                 updateBy: 'test1',
             };
             expect(result).to.eql(expected);
+        });
+    });
+
+    describe('#cleanEmptyValues', () => {
+        it('return new object without empty values', () => {
+            const input = {
+                id: null,
+                name: '',
+                test: 'test',
+            };
+            const result = ObjectHelper.cleanEmptyValues(input);
+            expect(result).to.eql({test: 'test'});
         });
     });
 });
